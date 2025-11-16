@@ -18,9 +18,15 @@ jobs:
       - name: Verify Docker installation
         run: docker --version
 
-      - name: Run poseidon with Docker Compose
+      - name: Build poseidon Docker image
+        run: |
+          docker build -t poseidon .
+
+      - name: Run poseidon container
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          docker compose up --build --abort-on-container-exit
+          docker run --rm \
+            -e OPENAI_API_KEY="${OPENAI_API_KEY}" \
+            poseidon
 
