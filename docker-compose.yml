@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  poseidon:
+    build: .   # ← Uses Dockerfile in current directory
+    container_name: poseidon
+    env_file:
+      - /config/.env.development                  # load all env vars
+    volumes:
+      - ./config:/app/config
+      - ./temp:/app/temp
+    command: ["python", "core/orchestrator/orchestrator.py"]

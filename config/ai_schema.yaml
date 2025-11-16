@@ -1,0 +1,65 @@
+api:
+  base_url: "http://localhost:8080"
+  auth:
+    type: none         # none | bearer | basic | apiKey
+    token_env: "API_TOKEN"   # optional
+    header_name: "Authorization"
+
+tests:
+  - name: "Create User Tests"
+    endpoint: "/users"
+    method: POST
+    tags: ["user", "create"]
+    enabled: true
+
+    inputs:
+      # overrides or extends swagger example bodies
+      base_body:
+        name: "John Doe"
+        email: "john@example.com"
+        password: "Pass1234"
+
+    variations:
+      positive:
+        - name: "valid_user"
+          description: "Valid user creation"
+
+        - name: "boundary_name"
+          description: "Max length of name"
+
+      negative:
+        - name: "missing_email"
+          description: "Email is missing"
+          remove_fields: ["email"]
+
+        - name: "invalid_email"
+          description: "Invalid email format"
+          modify_fields:
+            email: "not-an-email"
+
+        - name: "missing_password"
+          description: "Password missing"
+          remove_fields: ["password"]
+
+  - name: "Login Tests"
+    endpoint: "/login"
+    method: POST
+    tags: ["auth"]
+    enabled: true
+
+    inputs:
+      base_body:
+        email: "john@example.com"
+        password: "Pass1234"
+
+    variations:
+      positive:
+        - name: "valid_login"
+
+      negative:
+        - name: "wrong_password"
+          modify_fields:
+            password: "wrongpass"
+
+        - name: "missing_password"
+          remove_fields: ["password"]

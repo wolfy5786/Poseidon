@@ -1,0 +1,28 @@
+name: Engine CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run-engine:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Set up Docker Compose (comes preinstalled in GitHub runners)
+      - name: Verify Docker installation
+        run: docker --version
+
+      - name: Run poseidon container
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          docker run --rm \
+            -e OPENAI_API_KEY="${OPENAI_API_KEY}" \
+            poseidon
+
