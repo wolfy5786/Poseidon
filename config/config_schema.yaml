@@ -1,0 +1,6 @@
+config:
+  openapi_path: "config/openapi.yaml"
+  test_cases_path: "config/test_cases.yaml"
+  swagger_path: "config/swagger.yaml"
+  report_path: "reports/"
+  ai_model: "gpt-4"

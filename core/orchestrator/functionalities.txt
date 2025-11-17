@@ -1,0 +1,15 @@
+The orchestrator should:
+
+Load config
+
+Load the OpenAPI file path
+
+Call API parser
+
+Call test generator with parsed API model
+
+Call Postman adapter to generate collection
+
+Call Newman executor
+
+Call reporter to summarize output
