@@ -1,0 +1,93 @@
+{
+    "schema" : "",
+    "title" : "Test Generation Config",
+    "type" : "object",
+    "properties": {
+        "language": { 
+            "type": "string",       
+            "enum": ["java","python","javascript"],
+            "_comment" : "choose a language of 3 to write test casses"
+        },
+        "framework" : {
+            "type" : "string",
+            "description" : "framework must be specific to language"
+        },
+        "testing_tool" : {
+            "type" : "string",
+            "description" : "tools like Postman, curl, Jmeter, curl, etc"
+        },
+        "base_url" : {"type" : "string"},
+        "auth" : {
+            "type" : "object",
+            "properties": {
+                "auth_type" : {"type":"string"},
+                "token_env" : {"type":"string"},
+                "header_name" : {"type":"string"} 
+            }
+        },
+        "tests" : {
+            "type" : "array",
+            "items" : {
+                "description" : "define your test",
+                "type" : "object",
+                "properties" : {
+                    "name" : {"type" : "string"},
+                    "method" : {
+                        "type" : "string",
+                        "enum" : ["GET", "POST", "DELETE", "PUT", "PATCH", "HEAD", "TRACE", "OPTIONS", "CONNECT"]
+                    },
+                    "endpoint" : {"type" : "string"},
+                    "request_body" : {
+                        "type" : "array",
+                        "description" : "JSON object write your request body, must match openAPI specs",
+                        "additionalProperties" : true
+                    },
+                    "variations" : {
+                        "type" : "array",
+                        "description" : "",
+                        "items" : {
+                            "type" : "object",
+                            "properties" : {
+                                "details" : {"type" : "string"},
+                                "kind" : {
+                                    "type" : "string",
+                                    "enum" : ["positive", "egde", "negative"]
+                                },
+                                "change_field" : {"type" : "string"},
+                                "change_to" : {"type" : {}},
+                                "sub_order" : {
+                                    "type" : "integer",
+                                    "description" : "must be unique",
+                                    "minimum" : 0 
+                                }
+                            }
+                        }
+                    },
+                    "order" : {
+                        "type" : "integer",
+                        "minimum" : 0,
+                        "description" : "must be unique"
+                    }
+                },
+                "required" : ["method", "endpoint", "request_body"]
+            }
+        }
+    },
+    "required" : ["auth", "base_url"],
+    "_commments" : ["",
+                    "request ought to be sned throught language specific frameworks or tools like Postman"],
+    "oneOf" : [
+        {
+            "required": ["language","framework"],
+            "not" : {
+                "required":["testing_tool"]
+            }
+        },
+        {
+            "required":["testing_tool"],
+            "not" : {
+                "required" : ["language","framework"]
+            }
+        }
+    ]
+}

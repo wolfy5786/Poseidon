@@ -1,6 +1,17 @@
 config:
-  openapi_path: "config/openapi.yaml"
-  test_cases_path: "config/test_cases.yaml"
+  openapi_path: "config/openapi.yaml" 
   swagger_path: "config/swagger.yaml"
+  test_cases_tobe_execute_path: "config/test_cases_tobe_execute_path.yaml"
+  test_cases_genrated_path: "config/test_cases_genrated_path.yaml"
   report_path: "reports/"
   ai_model: "gpt-4"
+
+
+#path to Documentation of API
+#path to run the already genrated test casses
+#path to Store Test cases genrated (should be empty, should not be same as execute_path)
+#path to store reports
+#AI model to be used for gen
+
+#openapi file contains all details for API
+#poseiden file must contain all details required to gen test cases
