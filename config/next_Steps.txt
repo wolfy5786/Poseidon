@@ -1,0 +1,3 @@
+add some way to authenticate pre test
+how can we make it more flexible like adding multiple API calls
+user can give either the json schema or we create it based on user's prompt

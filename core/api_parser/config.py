@@ -10,4 +10,4 @@ class Config:
     swagger_path: Optional[str] = None
     report_path: Optional[str] = None
     ai_model: Optional[str] = None
-    openapi_key: Optional[str] = None
+    openAi_api_key: Optional[str] = None
