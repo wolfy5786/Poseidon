@@ -39,5 +39,6 @@ jobs:
 
       - name: Run unit tests
         run: |
+           pip install --no-cache-dir -r requirements.txt
            pytest --cov=core/api_parser core/tests/
 
