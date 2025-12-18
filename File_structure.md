@@ -1,20 +1,25 @@
-/engine
+/poseidon
    /core
        api_parser/           # Reads Swagger/OpenAPI
-       test_generator/       # Calls AI to generate tests
-       postman_adapter/      # Creates Postman collections dynamically
-       reporter/             # Aggregates & formats results
-       orchestrator/         # Coordinates the flow end-to-end
+            test_gen_schema_verifier_helper.py
+            test_gen_schema_verifier.py
+       test_generator/       
+       postman_adapter/      
+       reporter/             
+       orchestrator/
+        tests/
+                test_test_gen_schema_verifier_helper.py         
    /config
-       engine.yaml           # Config for AI model, thresholds, envs
-       test_schema.yaml      # Your custom test description schema
+       engine.yaml           
+       test_schema.yaml      
    /ci
-       github_workflows/     # GitHub Actions pipeline
+       github_workflows/     
    /temp
-       generated_tests/      # AI-generated YAML test files
-       generated_collections/# Postman collections ready for execution
-       results/              # Postman/Newman raw results
+       generated_tests/      
+       generated_collections
+       results/             
    /interfaces
-       cli/                  # Command-line wrapper
-       api/                  # (Optional) Engine REST API
+       cli/                  
+       api/   
+
    README.md
