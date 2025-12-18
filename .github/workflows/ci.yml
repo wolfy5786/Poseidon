@@ -37,3 +37,7 @@ jobs:
             -e OPENAI_API_KEY="${OPENAI_API_KEY}" \
             poseidon
 
+      - name: Run unit tests
+        run: |
+           pytest --cov=core/api_parser core/tests/
+
