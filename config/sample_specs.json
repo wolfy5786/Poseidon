@@ -14,7 +14,7 @@
                 "name" : "simple_get _request",
                 "description" : "simple get request",
                 "priority" : "medium",
-                "enabled" : "False",
+                "enabled" : false,
                 "method" : "GET",
                 "expected_response" : {
                     "status_code" : 200,

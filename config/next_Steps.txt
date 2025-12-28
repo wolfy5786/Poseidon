@@ -7,3 +7,6 @@ add a json field to time responce and store it
 secure how you fetch credentials and authenticate
 
 write unit test casses for api parser
+
+should you submit json specs file to LLM or parse json file into description and submit 
+test results
