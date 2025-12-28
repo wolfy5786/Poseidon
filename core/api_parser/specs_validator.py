@@ -74,9 +74,12 @@ class ConfigValidator:
         # Custom validation
         if verbose:
             print("\nRunning custom validations...")
-        
-        custom_errors = helper.run_custom_validations(config)
-        report.custom_errors = custom_errors
+
+        try : 
+            custom_errors = helper.run_custom_validations(config)
+            report.custom_errors = custom_errors
+        except Exception as e:
+            print(type(e).__name__, ":", e)
         
         if verbose:
             if not custom_errors:

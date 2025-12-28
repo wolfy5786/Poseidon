@@ -9,15 +9,17 @@
     "base_url" : "",
     "language" : "java",
     "framework" : "any",
-    "tests" : {
-        "name" : "simple_get _request",
-        "description" : "simple get request",
-        "priority" : "medium",
-        "enabled" : "false",
-        "method" : "GET",
-        "expected_response" : {
-            "status_code" : 200,
-            "max_response_time_ms" : 10
-        }
-    }
+    "tests" : [
+            {
+                "name" : "simple_get _request",
+                "description" : "simple get request",
+                "priority" : "medium",
+                "enabled" : "false",
+                "method" : "GET",
+                "expected_response" : {
+                    "status_code" : 200,
+                    "max_response_time_ms" : 10
+                }
+            }
+    ]
 }
