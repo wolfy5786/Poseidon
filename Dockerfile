@@ -22,5 +22,5 @@ COPY core/ ./core/
 COPY config/ ./config/
 COPY interface/ ./interface/
 # ---- Default Entrypoint ----
-CMD ["python","-m", "core/orchestrator/orchestrator.py"]
+CMD ["python","-m", "./core/orchestrator/orchestrator.py"]
 # -m adds the modules on import path
