@@ -1,12 +1,39 @@
 version: "3.9"
 
 services:
+  # --------------------------------------------------
+  # Main application service
+  # Used for local development and normal execution
+  # --------------------------------------------------
   poseidon:
-    build: .   # ← Uses Dockerfile in current directory
+    build: .                        # Build image from local Dockerfile
     container_name: poseidon
     env_file:
-      - /config/.env.development                  # load all env vars
+      - /config/.env.development    # Load all environment variables
     volumes:
-      - ./config:/app/config
-      - ./temp:/app/temp
+      - ./config:/app/config        # Mount config files for local editing
+      - ./temp:/app/temp            # Persist temp files locally
     command: ["python", "core/orchestrator/orchestrator.py"]
+
+  # --------------------------------------------------
+  # Pytest service
+  # Used ONLY for running tests inside the container
+  # --------------------------------------------------
+  pytest:
+    build: .                        # Use the same image as production
+    container_name: poseidon-tests
+    env_file:
+      - /config/.env.development    # Same env vars as the app (if needed)
+    volumes:
+      - .:/app                      # Mount source code for live test updates
+    command: >
+      pytest
+      --cov=core/api_parser
+      core/tests/
+
+
+
+#docker compose up poseidon
+#docker compose run --rm pytest
+#docker compose run --rm --build pytest
+#docker compose down --volumes --remove-orphans

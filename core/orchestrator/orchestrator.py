@@ -1,26 +1,26 @@
+from core.api_parser import specs_validator as spv
+
 class Orchestrator:
-    def __init__(self):
-        pass
+    def __init__(self, input_specs_path):
+        self.input_specs_path = input_specs_path
+        self.specs_schema_path = "./config/specs_schema_v2.json"
     
     def test_fun(self):
         print("Orchestrator test function called")
-        
-    def parse_config(self):
-        pass    
     
-    def parse_OpenAPI(self):
-        pass
+    def specs_validation(self):
+        return spv.validate_config(self.input_specs_path, self.specs_schema_path)
     
-    def parse_swagger(self):
+    def generate_tests(self):
         pass
 
-    def call_testcase_generator(self):
+    def execute(self):
         pass
-    
-    def call_Postman_executor(self):
+
+    def report(self):
         pass
-    
-    def call_reporter(self):
+
+    def cleanup(self):
         pass
     
 
