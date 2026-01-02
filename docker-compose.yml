@@ -33,7 +33,7 @@ services:
 
 
 
-#docker compose up poseidon
-#docker compose run --rm pytest
-#docker compose run --rm --build pytest
-#docker compose down --volumes --remove-orphans
+#docker compose up poseidon to run code
+#docker compose run --rm pytest to test code
+#docker compose run --rm --build pytest to run by building fresh
+#docker compose down --volumes --remove-orphans clear builds

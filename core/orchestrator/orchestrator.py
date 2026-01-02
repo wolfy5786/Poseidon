@@ -1,4 +1,4 @@
-from core.api_parser import specs_validator as spv
+import core.api_parser.specs_validator as spv
 
 class Orchestrator:
     def __init__(self, input_specs_path):
